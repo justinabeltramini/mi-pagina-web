@@ -1,0 +1,7 @@
+li {display: inline ;margin: right 50px;}
+a {text-decoration: none}
+aside {background-color: rgb(247, 163, 205);display: inline-block;width:20%;height: 600px;vertical-align:top}
+nav {text-align:right; height: 25px;line-height: 25px;}
+nav img {float:left;margin-top: 2px; }
+section {display:inline-block;width: 80%; height: 600px; background-color:rgb(250,236,244);}
+body{margin: 0;}
