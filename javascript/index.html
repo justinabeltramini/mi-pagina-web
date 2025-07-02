@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="icono.png" type="">
+</head>
+<body>
+    <header class="hero-slider">
+        <div class="slides">
+          <img src="aura.jpg" class="slide active" alt="Aura 1">
+          <img src="aura2.jpg" class="slide" alt="Aura 2">
+        </div>
+        <div class="hero-text">
+          <h1>Hola! Soy Justina Beltramini</h1>
+          <p></p>
+        </div>
+      </header>
+
+  <nav class="navbar">
+    <ul>
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#habilidades">Habilidades</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+      <li><a href="galeria.html">Galería</a></li>
+      <li><a href="buscador.html">Buscador</a></li>
+      <li><a href="../index.html"> Linktree </a></li>
+
+    </ul>
+  </nav>
+
+  <main>
+    <section id="sobre-mi" class="sobre-mi">
+      <h2>Sobre mí</h2>
+      <div class="sobre-mi-contenido">
+        <div class="sobre-texto">
+          <p>
+            Hola!🙋🏽‍♀️ Mi nombre es Justina Beltramini, tengo 22 años y soy estudiante de Comercialización en UADE.
+            Me gusta mucho el diseño y sacar fotos cuando viajo.
+          </p>
+          <p>
+            Esta es mi primera vez realizando trabajos sobre diseño web, y está siendo una experiencia tan desafiante como divertida. Cada línea de código me permite descubrir nuevas formas de expresar ideas y encontrar un equilibrio entre estética y funcionalidad.
+          </p>
+          <p>
+            Y tengo muchas ganas de seguir aprendiendo!
+          </p>
+          <button class="boton" onclick="document.getElementById('modal').style.display='flex';">Más datos sobre mi</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="proyectos" class="proyectos">
+      <h2>Mis Proyectos</h2>
+      <div class="cards">
+        <div class="card">
+          <img src="camara.webp" alt="Carrousel">
+          <h3>Carrousel de imágenes</h3>
+          <p>Un slider con botones para navegar entre imágenes.</p>
+          <a href="carrousel.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+          <img src="calculadora.webp" alt="Calculadora">
+          <h3>Calculadora</h3>
+          <p>Calculadora básica con operaciones aritméticas.</p>
+          <a href="calculadora.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+          <img src="tareas.webp" alt="Lista de tareas">
+          <h3>Lista de tareas</h3>
+          <p>Agregá y eliminá tareas fácilmente.</p>
+          <a href="tareas.html" target="_blank">Ver proyecto</a>
+        </div>
+        <div class="card">
+            <h3>Buscador de Proyectos</h3>
+            <p>Buscá tus proyectos por nombre o descripción.</p>
+            <a href="buscador.html" target="_blank">Ver proyecto</a>
+          </div>
+          
+      </div>
+    </section>
+
+    <section id="habilidades" class="habilidades">
+      <h2>Habilidades</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>Responsive Design</li>
+        <li>GitHub</li>
+      </ul>
+    </section>
+
+    <section id="contacto" class="contacto">
+      <h2>Contacto</h2>
+      <form action="mailto:jubeltramini@uade.edu.ar" method="post" enctype="text/plain">
+        <input type="text" name="nombre" placeholder="Tu nombre" required>
+        <input type="email" name="email" placeholder="Tu email" required>
+        <textarea name="mensaje" placeholder="Escribí tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 - Justina Beltramini</p>
+    <div>
+      <a href="https://github.com/justinabeltramini/mi-pagina-web">GitHub</a> |
+    </div>
+    <div>
+      <a href="../index.html"> Linktree</a> |
+      <a href="../identikit/index.html"> Identikit</a> |
+      <a href="../blog/index.html"> Blog</a>
+    </div>
+  </footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="document.getElementById('modal').style.display='none'">&times;</span>
+      <h2>Datos curiosos sobre mí</h2>
+      <ul style="text-align: left; list-style: none; padding: 0;">
+        <li> 🔹 Soy de La Plata.</li>
+        <li> 🔹 Soy del signo Piscis.</li>
+        <li> 🔹 Este año me recibo en UADE.</li>
+        <li> 🔹 Mi meta es tener una agencia de Marketing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    // Hero animado
+    const textoHero = "Estudiante de Marketing en UADE";
+    let i = 0;
+    function escribir() {
+      if (i < textoHero.length) {
+        document.querySelector(".hero-content p").textContent += textoHero.charAt(i);
+        i++;
+        setTimeout(escribir, 50);
+      }
+    }
+    document.querySelector(".hero-content p").textContent = "";
+    escribir();
+
+    // Animación cards
+    const cards = document.querySelectorAll('.card');
+    window.addEventListener('scroll', () => {
+      cards.forEach(card => {
+        const top = card.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          card.classList.add('visible');
+        }
+      });
+    });
+
+    // Validación formulario
+    document.querySelector("form").addEventListener("submit", e => {
+      const nombre = document.querySelector("[name=nombre]").value;
+      const email = document.querySelector("[name=email]").value;
+      if (nombre.length < 2) {
+        alert("El nombre es demasiado corto.");
+        e.preventDefault();
+      } else if (!email.includes("@")) {
+        alert("Ingresá un email válido.");
+        e.preventDefault();
+      }
+    });
+
+  </script>
+
+<script>
+    const slides = document.querySelectorAll(".slide");
+    let currentSlide = 0;
+  
+    setInterval(() => {
+      slides[currentSlide].classList.remove("active");
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add("active");
+    }, 3000);
+  </script>
+<script>
+    // Simple SPA navigation
+    const sections = document.querySelectorAll("main > section");
+  
+    function showSection(id) {
+      sections.forEach(sec => {
+        sec.style.display = (sec.id === id) ? "block" : "none";
+      });
+    }
+  
+    window.addEventListener("hashchange", () => {
+      const id = location.hash.replace("#", "");
+      if (id) showSection(id);
+    });
+  
+    // On load
+    window.addEventListener("load", () => {
+      const id = location.hash.replace("#", "") || "sobre-mi";
+      showSection(id);
+    });
+  </script>
+  
+</body>
+</html>
